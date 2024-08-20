@@ -17,6 +17,7 @@ root.render(
   clientId="7HtmSMinb1tGjGxiFiC1cSBJ8U53x2kb"
   redirectUri={window.location.origin}
   >
+    
     <AuthContextProvider>
   <BrowserRouter>
     <App />
