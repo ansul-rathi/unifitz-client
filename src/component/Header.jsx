@@ -97,15 +97,15 @@ const Header = () => {
   return (
     <header className="w-full h-20 leading-10" ref={headerRef}>
       <div className="container">
-        <div className="display-flex items-center justify-between">
-          <div className="display-flex items-center gap-2">
-            <div className="w-10 h-10 p-2.5 rounded leading-10 display-flex items-center justify-center">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 p-2.5 rounded leading-10 flex items-center justify-center">
               <img src={logo} alt="" />
             </div>
             <h2>Health & Fitness</h2>
           </div>
           <div className="navigation">
-            <ul className="display-flex items-center gap-x-10">
+            <ul className="flex items-center gap-x-10">
               {nav__links.map((item) => (
                 // <li className="font-semibold text-sm">
                 //   <a href={item.path}>{item.display}</a>
@@ -114,7 +114,7 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          <div className="display-flex items-center gap-x-6">
+          <div className="flex items-center gap-x-6">
           {isAuthenticated && (
               <p className="font-semibold text-sm"> {user.name} </p>
           )}
