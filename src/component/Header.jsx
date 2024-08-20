@@ -70,9 +70,9 @@ const Header = () => {
     const headerRef =useRef(null);
     const headerFunc=()=>{
       if(document.body.scrollTop>80 || document.documentElement.scrollTop>80){
-        headerRef.current.classList.add("sticky__header");
+        headerRef.current.classList.add("w-full sticky top-0 left-0 z-50 bg-white");
       }  else{
-        headerRef.current.classList.remove("sticky__header");
+        headerRef.current.classList.remove("w-full sticky top-0 left-0 z-50 bg-white");
       }
     }
     useEffect(()=>{
@@ -95,32 +95,32 @@ const Header = () => {
     }
 
   return (
-    <header className="header" ref={headerRef}>
+    <header className="w-full h-20 leading-10" ref={headerRef}>
       <div className="container">
-        <div className="nav__wrapper">
-          <div className="logo">
-            <div className="logo__img">
+        <div className="display-flex items-center justify-between">
+          <div className="display-flex items-center gap-2">
+            <div className="w-10 h-10 p-2.5 rounded leading-10 display-flex items-center justify-center">
               <img src={logo} alt="" />
             </div>
             <h2>Health & Fitness</h2>
           </div>
           <div className="navigation">
-            <ul className="menu">
+            <ul className="display-flex items-center gap-x-10">
               {nav__links.map((item) => (
-                // <li className="nav__item">
+                // <li className="font-semibold text-sm">
                 //   <a href={item.path}>{item.display}</a>
                 // </li>
-                <NavLink className="nav__item" key={item.path} to={item.path}>{item.display}</NavLink>
+                <NavLink className="font-semibold text-sm" key={item.path} to={item.path}>{item.display}</NavLink>
               ))}
             </ul>
           </div>
-          <div className="nav__right">
+          <div className="display-flex items-center gap-x-6">
           {isAuthenticated && (
-              <p className="nav__item"> {user.name} </p>
+              <p className="font-semibold text-sm"> {user.name} </p>
           )}
-            {isAuthenticated?<button className="register__btn" onClick={handleLogOut}>Log Out</button>:
-            <button className="register__btn" onClick={handleLogIn}>Log In</button>}
-            <span className="mobile__menu">
+            {isAuthenticated?<button className="border-none px-10 py-5 rounded text-sm font-medium cursor-pointer text-white bg-blue-500" onClick={handleLogOut}>Log Out</button>:
+            <button className="border-none px-10 py-5 rounded text-sm font-medium cursor-pointer text-white bg-blue-500" onClick={handleLogIn}>Log In</button>}
+            <span className="text-sm cursor-pointer display-hidden">
               <i className="ri-menu-line"></i>
             </span>
           </div>
