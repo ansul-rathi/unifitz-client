@@ -9,7 +9,7 @@ const Footer = () => {
       data-aos-duration="1100"
       data-aos="fade-up"
     >
-      <div className="container mx-auto px-4">
+      <div className="mx-auto px-4">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
             <div className="flex items-center mb-4">

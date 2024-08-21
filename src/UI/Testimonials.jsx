@@ -8,8 +8,8 @@ export default function Testimonials() {
   return (
     <>
       <section id="programs" className="py-12">
-        <div className="container mx-auto flex justify-center">
-          <div className="w-full max-w-lg">
+        <div className="mx-auto flex justify-center">
+          <div className="w-full ">
             <h2 className="text-4xl font-bold mb-12 text-center">
               <span className="text-indigo-600">Full-Length </span>
               Workout Programs

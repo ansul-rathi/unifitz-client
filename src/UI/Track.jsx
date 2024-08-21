@@ -54,7 +54,7 @@ const Track = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-6">
         Your <span className="text-indigo-600">fitness</span> Dashboard
       </h1>

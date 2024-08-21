@@ -4,11 +4,11 @@ import heroImg from "../assets/img/model1-removebg-preview.png";
 const Hero = () => {
   return (
     <section id="#">
-      <div className="container mx-auto py-12 px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-1/2 mb-8 md:mb-0">
+      <div className="mx-auto py-12 px-4">
+        <div className="flex flex-col md:flex-row ">
+          <div className="w-full md:w-1/2 mb-8 md:mb-0 ">
             <h2
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              className="text-4xl md:text-5xl font-bold mb-6 leading-tight sm:text-wrap"
               data-aos-duration="1000"
               data-aos="fade-up"
             >
@@ -47,9 +47,9 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="relative md:w-1/2">
-            <div className="relative flex items-center justify-center">
-              <div className="w-96 h-96 rounded-full border-8 border-gray-200">
+          <div className="relative w-full md:w-1/2 flex justify-center ">
+            <div className="relative   flex items-center justify-center">
+              <div className="w-96 h-96  rounded-full border-8 border-gray-200">
                 <div className="w-80 h-80 rounded-full border-8 border-indigo-300">
                   <div className="w-72 h-72 rounded-full bg-indigo-600 relative">
                     <img
@@ -77,14 +77,14 @@ const Hero = () => {
             </div>
 
             <div
-              className="absolute top-[345px] right-[-10px] bg-white p-5 rounded-md shadow-lg text-center"
+              className="absolute top-[345px] right-[-10px] bg-white p-5 rounded-md shadow-lg text-center top-60 left-1/3"
               data-aos-duration="1100"
               data-aos="fade-up"
             >
               <span className="bg-indigo-600 text-white p-4 rounded-full inline-flex items-center justify-center mb-4">
                 <i className="ri-map-pin-2-fill text-2xl"></i>
               </span>
-              <h5 className="text-sm text-gray-700">
+              <h5 className=" text-sm text-gray-700 ">
                 Find our gym centers near you
               </h5>
             </div>

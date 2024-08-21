@@ -6,11 +6,11 @@ import ex from "../assets/img/extended.png";
 const Exercise = () => {
   return (
     <section className="py-12">
-      <div className="container mx-auto text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4">
+      <div className="mx-auto text-center mb-12">
+        <h2 className="text-4xl font-bold mb-4 ">
           Benefits of <span className="text-indigo-600">Exercise</span>
         </h2>
-        <p className="text-gray-700 text-lg leading-relaxed">
+        <p className="text-gray-700 text-lg leading-relaxed text-justify">
           Exercise is essential for maintaining a healthy body and mind,
           <br /> and can improve quality of life in numerous ways.
         </p>

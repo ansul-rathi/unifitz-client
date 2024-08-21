@@ -16,7 +16,7 @@ function App() {
   return <>
   <Header/>
   <AllRoutes/>
-  <Footer/>
+  {/* <Footer/> */}
   {/* <Login/> */}
   </>;
 }

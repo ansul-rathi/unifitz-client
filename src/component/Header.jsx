@@ -95,8 +95,8 @@ const Header = () => {
     }
 
   return (
-    <header className="w-full h-20 leading-10" ref={headerRef}>
-      <div className="container">
+    <header className="hidden md:block w-full h-20 leading-10" ref={headerRef}>
+      <div >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 p-2.5 rounded leading-10 flex items-center justify-center">
