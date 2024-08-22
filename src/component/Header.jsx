@@ -1,4 +1,4 @@
-import React,{useEffect, useRef,useContext, useState} from "react";
+import React, { useEffect, useRef, useContext, useState } from "react";
 import "../styles/header.css";
 import logo from "../assets/img/Health___Fitness.png";
 import { NavLink } from "react-router-dom";
@@ -24,79 +24,114 @@ const nav__links = [
   },
 ];
 
-
 const Header = () => {
   const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
 
-  const {filter,setFilter}=useContext(AuthContext);
+  const { filter, setFilter } = useContext(AuthContext);
 
-  const isUserLoggedIn=()=>{
-  // console.log("Rohan2",isAuthenticated);
-    if(isAuthenticated){
+  const isUserLoggedIn = () => {
+    // console.log("Rohan2",isAuthenticated);
+    if (isAuthenticated) {
       console.log("user is Authenticated verifying user");
       verifyUser();
-    }else{
+    } else {
       console.log("No user is logged in");
     }
-  }
+  };
 
-  const verifyUser=()=>{
+  const verifyUser = () => {
     // console.log(user.name)
-    fetch(`https://healthandfitness.onrender.com/data`).then((res)=>{
-      return res.json();
-    }).then((data)=>{
-      // console.log(user);
-      let filteredData=data.filter((el)=>el.user==user.name);
-      // console.log(filteredData);
-      setFilter(filteredData);
-      if(filteredData.length<1){
-        let obj={
-          "id": Math.floor(Math.random() * 100),
-          "user": user.name,
-          "userdata": []
+    fetch(`https://healthandfitness.onrender.com/data`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        // console.log(user);
+        let filteredData = data.filter((el) => el.user == user.name);
+        // console.log(filteredData);
+        setFilter(filteredData);
+        if (filteredData.length < 1) {
+          let obj = {
+            id: Math.floor(Math.random() * 100),
+            user: user.name,
+            userdata: [],
+          };
+          fetch(`https://healthandfitness.onrender.com/data`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(obj),
+          });
+          setFilter([obj]);
         }
-        fetch(`https://healthandfitness.onrender.com/data`,{
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json",
-          },
-          body:JSON.stringify(obj) 
-        })
-        setFilter([obj]);
-      }
-    })
+      });
+  };
+
+  const headerRef = useRef(null);
+  const headerFunc = () => {
+    if (
+      document.body.scrollTop > 80 ||
+      document.documentElement.scrollTop > 80
+    ) {
+      headerRef.current.classList.add(
+        "w-full sticky top-0 left-0 z-50 bg-white"
+      );
+    } else {
+      headerRef.current.classList.remove(
+        "w-full sticky top-0 left-0 z-50 bg-white"
+      );
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", headerFunc);
+
+    return () => window.removeEventListener("scroll", headerFunc);
+  }, []);
+
+  useEffect(() => {
+    isUserLoggedIn();
+  }, [setFilter, isAuthenticated]);
+
+  const handleLogOut = () => {
+    logout({ returnTo: window.location.origin });
+  };
+
+  const handleLogIn = () => {
+    loginWithRedirect();
+  };
+
+  const[isOpen,setIsOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
   }
 
-    const headerRef =useRef(null);
-    const headerFunc=()=>{
-      if(document.body.scrollTop>80 || document.documentElement.scrollTop>80){
-        headerRef.current.classList.add("w-full sticky top-0 left-0 z-50 bg-white");
-      }  else{
-        headerRef.current.classList.remove("w-full sticky top-0 left-0 z-50 bg-white");
-      }
-    }
-    useEffect(()=>{
-        window.addEventListener("scroll",headerFunc);
-
-        return()=>window.removeEventListener("scroll",headerFunc);
-    },[])
-
-
-    useEffect(()=>{
-      isUserLoggedIn();
-    },[setFilter,isAuthenticated])
-
-    const handleLogOut=()=>{
-      logout({ returnTo: window.location.origin })
-    }
-
-    const handleLogIn=()=>{
-      loginWithRedirect();
-    }
 
   return (
-    <header className="hidden md:block w-full h-20 leading-10" ref={headerRef}>
-      <div >
+    <header className="w-full h-20 leading-10" ref={headerRef}>
+      <div class='md:hidden w-full flex justify-between'>
+     <button onClick={toggleNavbar}> <img src="icon-ham.jpg" alt="icon ham" className="h-10 w-8 cursor-pointer"></img></button>
+    
+      
+      </div>
+      <div className="border-none w-20 px-5 py-1 ml-48 rounded text-sm font-medium cursor-pointer text-white bg-blue-500 md:hidden ">
+          <button>Log In</button>
+        </div>
+      
+      
+      {isOpen?<div className=" bg-gray-700 pl-3 flex-col w-36 h-36 top-0 leading-8">
+      
+        <ul>Home</ul>
+        <ul>Programs</ul>
+        <ul>Membership</ul>
+        <ul>Track your fitness</ul>
+        
+       
+      </div>:""}
+
+      
+      <div className="hidden md:block">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 p-2.5 rounded leading-10 flex items-center justify-center">
@@ -110,16 +145,35 @@ const Header = () => {
                 // <li className="font-semibold text-sm">
                 //   <a href={item.path}>{item.display}</a>
                 // </li>
-                <NavLink className="font-semibold text-sm" key={item.path} to={item.path}>{item.display}</NavLink>
+                <NavLink
+                  className="font-semibold text-sm"
+                  key={item.path}
+                  to={item.path}
+                >
+                  {item.display}
+                </NavLink>
               ))}
             </ul>
           </div>
           <div className="flex items-center gap-x-6">
-          {isAuthenticated && (
+            {isAuthenticated && (
               <p className="font-semibold text-sm"> {user.name} </p>
-          )}
-            {isAuthenticated?<button className="border-none px-10 py-5 rounded text-sm font-medium cursor-pointer text-white bg-blue-500" onClick={handleLogOut}>Log Out</button>:
-            <button className="border-none px-10 py-5 rounded text-sm font-medium cursor-pointer text-white bg-blue-500" onClick={handleLogIn}>Log In</button>}
+            )}
+            {isAuthenticated ? (
+              <button
+                className="border-none px-5 py-1 rounded text-sm font-medium cursor-pointer text-white bg-blue-500"
+                onClick={handleLogOut}
+              >
+                Log Out
+              </button>
+            ) : (
+              <button
+                className="border-none px-5 py-1 rounded text-sm font-medium cursor-pointer text-white bg-blue-500"
+                onClick={handleLogIn}
+              >
+                Log In
+              </button>
+            )}
             <span className="text-sm cursor-pointer display-hidden">
               <i className="ri-menu-line"></i>
             </span>
