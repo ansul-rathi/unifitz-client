@@ -120,12 +120,13 @@ const Header = () => {
         </div>
       
       
-      {isOpen?<div className=" bg-gray-700 pl-3 flex-col w-36 h-36 top-0 leading-8">
-      
-        <ul>Home</ul>
-        <ul>Programs</ul>
-        <ul>Membership</ul>
-        <ul>Track your fitness</ul>
+      {isOpen?<div className=" bg-white  flex-col w-3/4 h-screen top-0 leading-8 z-[99]">
+        <ul className="bg-white">
+        <li className='h-12 mb-2 bg-white flex items-center pl-4 font-bold border-solid border-2 border-black'>Home</li>
+        <li className='h-12 mb-2 bg-white flex items-center pl-4 font-bold border-solid border-2 border-black'>Programs</li>
+        <li className='h-12 mb-2 bg-white flex items-center pl-4 font-bold border-solid border-2 border-black'>Membership</li>
+        <li className='h-12 mb-2 bg-white flex items-center pl-4 font-bold border-solid border-2 border-black'>Track your fitness</li>
+        </ul>
         
        
       </div>:""}
