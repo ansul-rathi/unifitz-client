@@ -45,16 +45,13 @@ const Header = () => {
   return (
     <header className="w-full h-20 leading-10 z-50 sticky top-0 bg-white shadow-md">
       <div className="flex justify-between items-center px-4 md:px-10">
-        {/* Logo on the left */}
         <div className="flex items-center">
           <img src={logo} alt="Health & Fitness" className="h-10" />
         </div>
 
-        {/* Hamburger menu on the right */}
         <div className="md:hidden">
           <button onClick={toggleNavbar} aria-label="Toggle navigation">
             {isOpen ? (
-              // Close SVG Icon
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-8 w-8"
@@ -70,7 +67,6 @@ const Header = () => {
                 />
               </svg>
             ) : (
-              // Hamburger SVG Icon
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-8 w-8"
@@ -89,7 +85,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <h2 className="font-bold text-xl">Health & Fitness</h2>
           <nav>
@@ -107,7 +102,6 @@ const Header = () => {
           </nav>
         </div>
 
-        {/* Desktop Login/Logout */}
         <div className="hidden md:flex items-center gap-x-6">
           {isAuthenticated && (
             <p className="font-semibold text-sm"> {user.name} </p>
@@ -130,7 +124,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex flex-col">
           <div className="bg-white w-64 h-full p-4 shadow-lg">
