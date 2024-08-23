@@ -9,10 +9,10 @@ const Hero = () => {
           <div className="w-full md:w-1/2 mb-8 md:mb-0 ">
             <h2
               className="text-4xl md:text-5xl font-bold mb-6 leading-tight sm:text-wrap"
-              data-aos-duration="1000"
-              data-aos="fade-up"
+              // data-aos-duration="1000"
+              // data-aos="fade-up"
             >
-              Exercise is the key to a{" "}
+              Exercise is the key to a
               <span className="text-indigo-600">Healthy</span> Lifestyle
             </h2>
             <p
